@@ -366,7 +366,7 @@ def check(
                 if not ureg.Quantity(value).check(dim):
                     val_dim = ureg.get_dimensionality(value)
                     raise DimensionalityError(value, "a quantity of", val_dim, dim)
-            return func(*args, **kwargs)
+            return func(*list_args)
 
         return wrapper
 
