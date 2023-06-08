@@ -291,6 +291,9 @@ def wraps(
             if ret[0] is None:
                 return result
 
+            if result is None:
+                return None
+
             return ureg.Quantity(
                 result, _replace_units(ret[0], values_by_name) if ret[1] else ret[0]
             )

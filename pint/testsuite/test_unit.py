@@ -672,6 +672,12 @@ class TestRegistry(QuantityTestCase):
         with pytest.raises(TypeError):
             ureg.check("[velocity]", "[time]", "[mass]")(gfunc)
 
+        def func_positional(x = None, y = None, z = None):
+            return z
+
+        func_positional_1 = ureg.check(None, None, ureg.meter)(func_positional)
+        assert func_positional_1(z=1 * ureg.meter) == 1 * ureg.meter
+
     def test_to_ref_vs_to(self):
         self.ureg.autoconvert_offset_to_baseunit = True
         q = 8.0 * self.ureg.inch
