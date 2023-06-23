@@ -360,6 +360,9 @@ def check(
                 if dim is None:
                     continue
 
+                if value is None:
+                    continue
+
                 if not ureg.Quantity(value).check(dim):
                     val_dim = ureg.get_dimensionality(value)
                     raise DimensionalityError(value, "a quantity of", val_dim, dim)
