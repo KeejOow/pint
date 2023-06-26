@@ -143,9 +143,9 @@ def _parse_wrap_args(args, registry=None):
         # third pass: convert other arguments
         for ndx in unit_args_ndx:
             if isinstance(values[ndx], ureg.Quantity):
-                new_values[ndx] = ureg._convert(
+                new_values[ndx] = ureg.Quantity(ureg._convert(
                     values[ndx]._magnitude, values[ndx]._units, args_as_uc[ndx][0]
-                )
+                ), args_as_uc[ndx][0])
             else:
                 if strict:
                     if isinstance(values[ndx], str):
